@@ -1,0 +1,7 @@
+# Fichiers et répertoires à ignorer
+# NPM (On ignore le répertoire node_modules et tous les fichiers log
+node_modules/
+**/*.log
+
+#Projet
+dist/
