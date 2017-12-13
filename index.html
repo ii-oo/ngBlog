@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mon premier blog avec AngularJS</title>
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="dist/app.js"></script>
+<!--	<script src="app/app.js"></script>
+	<script src="app/article.factory.js"></script>
+	<script src="app/article.service.js"></script>
+	<script src="app/login.controller.js"></script>
+	<script src="app/blog.controller.js"></script>
+	<script src="app/storage.controller.js"></script> -->
+
+	<link rel="stylesheet" href="dist/app.min.css" />
+</head>
+<body ng-app="ngblog">
+	<div id="login" ng-controller="LoginController as loginCtrl"
+		ng-show="loginCtrl.visible">
+		<label>Nom d'utilisateur</label>
+		<input ng-model="loginCtrl.username" name="username" />
+		<button ng-click="loginCtrl.validateUsername()">Valider</button>
+	</div>
+	<div id="save" class="buttonSave" ng-controller="StorageController as dataCtrl">
+		<button ng-click="dataCtrl.save()">Sauvegarder</button>
+		<button ng-click="dataCtrl.reload()">Recharger</button>
+	</div>
+	<div id="blog" ng-controller="BlogController as blogCtrl"
+		ng-hide="!blogCtrl.listVisible && !blogCtrl.formVisible">
+		<h1>Bienvenue dans mon blog mégatropgénial</h1>
+		<a href="" ng-click="blogCtrl.displayArticleForm(true)">
+			Ajouter un article
+		</a>
+		<div id="articles" ng-show="blogCtrl.listVisible">
+			<div class="article" ng-repeat="article in blogCtrl.articles">
+				<h2>
+					{{ article.title }}
+					<img src="assets/trash.svg"
+						ng-click="blogCtrl.deleteArticle(article.id)" />
+					<img src="assets/edit.svg"
+						ng-click="blogCtrl.editArticle(article)" />
+				</h2>
+				<p>{{ article.description }}</p>
+			</div>
+		</div>
+		<div id="article-form" ng-show="blogCtrl.formVisible">
+			<h2>{{ blogCtrl.article.id ? 'Modifier l\'article' : 'Nouvel article :'}}</h2>
+			<form ng-submit="blogCtrl.validateArticleForm($event)">
+				<div id="titleWrapper">
+					<label for="title">Titre :</label>
+					<input id="title" name="title"
+						ng-model="blogCtrl.article.title" />
+				</div>
+				<div id="descrWrapper" class="clearfix">
+					<label for="descr">Description :</label>
+					<textarea id="descr" name="descr"
+						ng-model="blogCtrl.article.description"></textarea>
+				</div>
+				<div class="action">
+					<buttton ng-click="blogCtrl.displayArticleForm(false)"
+						type="button">Annuler</buttton>
+					<button>Valider</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

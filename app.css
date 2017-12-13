@@ -1,0 +1,91 @@
+/* CLEAR FIX */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+div#blog > h1 {
+	text-align: center;
+}
+
+div#login, div#article-form {
+	width: 300px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div#login > * {
+    display: block;
+    margin: 5px;
+}
+
+div#articles {
+    margin: 0 5%;
+}
+
+div.article h2 {
+    border-bottom: 2px solid black;
+}
+
+div#article-form form {
+	height: 140px;
+}
+
+div#article-form form > div {
+	margin: 20px 0;
+}
+
+div#article-form form input {
+	float: right;
+}
+
+div#titleWrapper {
+	display: flex;
+}
+
+div#titleWrapper input {
+	flex: 3;
+}
+
+div#descrWrapper {
+	display: flex;
+	flex-direction: column;	
+}
+
+div#descrWrapper label,
+div#titleWrapper label {
+	flex: 1;
+}
+
+div#descrWrapper textarea {
+	flex: 3;
+}
+
+div#article-form form button {
+  margin: 20px auto 0 auto;
+  display: block;
+}
+
+img:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+
+div.actions button{
+    flex: 1;
+    height: 30px;
+}
